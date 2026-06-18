@@ -2,33 +2,49 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RoomInventory {
-
-    private Map<String, Integer> inventory;
+    private Map<String, Integer> availabilityMap;
+    private Map<String, Double> priceMap;
+    private Map<String, String> amenitiesMap;
 
     public RoomInventory() {
-        inventory = new HashMap<>();
 
-        // Initial Room Availability
-        inventory.put("Single Room", 10);
-        inventory.put("Double Room", 5);
-        inventory.put("Suite Room", 2);
+        availabilityMap = new HashMap<>();
+        priceMap = new HashMap<>();
+        amenitiesMap = new HashMap<>();
+
+        availabilityMap.put("Single Room", 10);
+        availabilityMap.put("Double Room", 5);
+        availabilityMap.put("Suite Room", 0);
+
+        priceMap.put("Single Room", 2000.0);
+        priceMap.put("Double Room", 3500.0);
+        priceMap.put("Suite Room", 7000.0);
+
+        amenitiesMap.put("Single Room",
+                "WiFi, TV, AC");
+
+        amenitiesMap.put("Double Room",
+                "WiFi, TV, AC, Mini Fridge");
+
+        amenitiesMap.put("Suite Room",
+                "WiFi, TV, AC, Mini Bar, Jacuzzi");
     }
 
     public int getAvailability(String roomType) {
-        return inventory.getOrDefault(roomType, 0);
+        return availabilityMap.getOrDefault(roomType, 0);
     }
 
-    public void updateAvailability(String roomType, int count) {
-        inventory.put(roomType, count);
+    public double getPrice(String roomType) {
+        return priceMap.getOrDefault(roomType, 0.0);
     }
 
-    public void displayInventory() {
-        System.out.println("===== CURRENT ROOM INVENTORY =====");
-
-        for (Map.Entry<String, Integer> entry : inventory.entrySet()) {
-            System.out.println(
-                    entry.getKey() + " : " + entry.getValue()
-            );
-        }
+    public String getAmenities(String roomType) {
+        return amenitiesMap.getOrDefault(roomType,
+                "No Amenities Available");
     }
+
+    public Map<String, Integer> getAllAvailability() {
+        return availabilityMap;
+    }
+
 }
