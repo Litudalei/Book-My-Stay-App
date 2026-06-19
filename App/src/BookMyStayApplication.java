@@ -1,25 +1,38 @@
 public class BookMyStayApplication {
-    public static void main(String[] args) {   HotelInventory inventory = new HotelInventory();
+    public static void main(String[] args) {
+        ServiceManagement serviceManager =
+                new ServiceManagement();
 
-        BookingService bookingService =
-                new BookingService(inventory);
+        String reservationId = "RES101";
 
-        inventory.displayInventory();
+        Service breakfast =
+                new Service(
+                        "Breakfast",
+                        500);
 
-        System.out.println("\n===== BOOKINGS =====");
+        Service spa =
+                new Service(
+                        "Spa",
+                        2000);
 
-        bookingService.bookRoom("Single");
+        Service pickup =
+                new Service(
+                        "Airport Pickup",
+                        1000);
 
-        bookingService.bookRoom("Single");
+        serviceManager.addService(
+                reservationId,
+                breakfast);
 
-        bookingService.bookRoom("Double");
+        serviceManager.addService(
+                reservationId,
+                spa);
 
-        bookingService.bookRoom("Suite");
+        serviceManager.addService(
+                reservationId,
+                pickup);
 
-        bookingService.bookRoom("Suite");
-
-        bookingService.displayBookedRooms();
-
-        inventory.displayInventory();
+        serviceManager.displayServices(
+                reservationId);
 }
 }
