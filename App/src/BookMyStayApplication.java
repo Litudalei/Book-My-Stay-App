@@ -1,18 +1,38 @@
 public class BookMyStayApplication {
-    public static void main(String[] args) {  RoomSearchService service =
-            new RoomSearchService();
+    public static void main(String[] args) {
+        ServiceManagement serviceManager =
+                new ServiceManagement();
 
-    // Display all available rooms
-        service.searchAvailableRooms();
+        String reservationId = "RES101";
 
-    // Search specific room
-        service.viewRoomDetails("Double");
+        Service breakfast =
+                new Service(
+                        "Breakfast",
+                        500);
 
-    // Availability check
-        if (service.isRoomAvailable("Suite")) {
-        System.out.println("Suite can be booked.");
-    } else {
-        System.out.println("Suite is not available.");
-    }
+        Service spa =
+                new Service(
+                        "Spa",
+                        2000);
+
+        Service pickup =
+                new Service(
+                        "Airport Pickup",
+                        1000);
+
+        serviceManager.addService(
+                reservationId,
+                breakfast);
+
+        serviceManager.addService(
+                reservationId,
+                spa);
+
+        serviceManager.addService(
+                reservationId,
+                pickup);
+
+        serviceManager.displayServices(
+                reservationId);
 }
 }
