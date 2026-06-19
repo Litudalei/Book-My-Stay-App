@@ -1,13 +1,22 @@
-public class Room {
+public abstract class Room {
 
     private String roomId;
     private String roomType;
-    private boolean booked;
+    private int numberOfBeds;
+    private double roomSize;
+    private double pricePerNight;
 
-    public Room(String roomId, String roomType) {
+    public Room(String roomId,
+                String roomType,
+                int numberOfBeds,
+                double roomSize,
+                double pricePerNight) {
+
         this.roomId = roomId;
         this.roomType = roomType;
-        this.booked = false;
+        this.numberOfBeds = numberOfBeds;
+        this.roomSize = roomSize;
+        this.pricePerNight = pricePerNight;
     }
 
     public String getRoomId() {
@@ -18,16 +27,17 @@ public class Room {
         return roomType;
     }
 
-    public boolean isBooked() {
-        return booked;
+    public int getNumberOfBeds() {
+        return numberOfBeds;
     }
 
-    public void setBooked(boolean booked) {
-        this.booked = booked;
+    public double getRoomSize() {
+        return roomSize;
     }
 
-    @Override
-    public String toString() {
-        return roomId + " (" + roomType + ")";
+    public double getPricePerNight() {
+        return pricePerNight;
     }
+
+    public abstract void displayRoomDetails();
 }

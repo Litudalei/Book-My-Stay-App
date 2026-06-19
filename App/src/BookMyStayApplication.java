@@ -1,38 +1,37 @@
 public class BookMyStayApplication {
     public static void main(String[] args) {
-        ServiceManagement serviceManager =
-                new ServiceManagement();
+        BookingHistoryService service =
+                new BookingHistoryService();
 
-        String reservationId = "RES101";
+        Reservation r1 =
+                new Reservation(
+                        "RES101",
+                        "Gitiranjan",
+                        "S101",
+                        "CONFIRMED");
 
-        Service breakfast =
-                new Service(
-                        "Breakfast",
-                        500);
+        Reservation r2 =
+                new Reservation(
+                        "RES102",
+                        "Rahul",
+                        "D201",
+                        "CONFIRMED");
 
-        Service spa =
-                new Service(
-                        "Spa",
-                        2000);
+        Reservation r3 =
+                new Reservation(
+                        "RES103",
+                        "Amit",
+                        "SU301",
+                        "CONFIRMED");
 
-        Service pickup =
-                new Service(
-                        "Airport Pickup",
-                        1000);
+        service.confirmBooking(r1);
+        service.confirmBooking(r2);
+        service.confirmBooking(r3);
 
-        serviceManager.addService(
-                reservationId,
-                breakfast);
+        service.cancelBooking("RES102");
 
-        serviceManager.addService(
-                reservationId,
-                spa);
+        service.displayBookingHistory();
 
-        serviceManager.addService(
-                reservationId,
-                pickup);
-
-        serviceManager.displayServices(
-                reservationId);
+        service.generateReport();
 }
 }
