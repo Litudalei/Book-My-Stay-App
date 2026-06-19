@@ -1,18 +1,25 @@
 public class BookMyStayApplication {
-    public static void main(String[] args) {  RoomSearchService service =
-            new RoomSearchService();
+    public static void main(String[] args) {   HotelInventory inventory = new HotelInventory();
 
-    // Display all available rooms
-        service.searchAvailableRooms();
+        BookingService bookingService =
+                new BookingService(inventory);
 
-    // Search specific room
-        service.viewRoomDetails("Double");
+        inventory.displayInventory();
 
-    // Availability check
-        if (service.isRoomAvailable("Suite")) {
-        System.out.println("Suite can be booked.");
-    } else {
-        System.out.println("Suite is not available.");
-    }
+        System.out.println("\n===== BOOKINGS =====");
+
+        bookingService.bookRoom("Single");
+
+        bookingService.bookRoom("Single");
+
+        bookingService.bookRoom("Double");
+
+        bookingService.bookRoom("Suite");
+
+        bookingService.bookRoom("Suite");
+
+        bookingService.displayBookedRooms();
+
+        inventory.displayInventory();
 }
 }
