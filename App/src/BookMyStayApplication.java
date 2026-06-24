@@ -1,41 +1,38 @@
 public class BookMyStayApplication {
     public static void main(String[] args) {
-        System.out.println("welcome to hotel booking management system");
-        System.out.println("System initialized successfully");
-        // Room Objects
-        Room singleRoom = new SingleRoom();
-        Room doubleRoom = new DoubleRoom();
-        Room suiteRoom = new SuiteRoom();
+        ServiceManagement serviceManager =
+                new ServiceManagement();
 
-        // Static Availability Variables
-        int singleRoomAvailability = 10;
-        int doubleRoomAvailability = 5;
-        int suiteRoomAvailability = 2;
+        String reservationId = "RES101";
 
-        System.out.println("=================================");
-        System.out.println(" HOTEL BOOKING MANAGEMENT SYSTEM ");
-        System.out.println("         VERSION 2.0             ");
-        System.out.println("=================================\n");
+        Service breakfast =
+                new Service(
+                        "Breakfast",
+                        500);
 
-        System.out.println("Single Room Details");
-        singleRoom.displayRoomDetails();
-        System.out.println("Available Rooms: "
-                + singleRoomAvailability);
+        Service spa =
+                new Service(
+                        "Spa",
+                        2000);
 
-        System.out.println("\n-----------------------------\n");
+        Service pickup =
+                new Service(
+                        "Airport Pickup",
+                        1000);
 
-        System.out.println("Double Room Details");
-        doubleRoom.displayRoomDetails();
-        System.out.println("Available Rooms: "
-                + doubleRoomAvailability);
+        serviceManager.addService(
+                reservationId,
+                breakfast);
 
-        System.out.println("\n-----------------------------\n");
+        serviceManager.addService(
+                reservationId,
+                spa);
 
-        System.out.println("Suite Room Details");
-        suiteRoom.displayRoomDetails();
-        System.out.println("Available Rooms: "
-                + suiteRoomAvailability);
+        serviceManager.addService(
+                reservationId,
+                pickup);
 
-        System.out.println("\nApplication Terminated.");
-    }
+        serviceManager.displayServices(
+                reservationId);
+}
 }
